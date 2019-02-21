@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 
 class Flex extends Component {
   element () {
-    if (this.props.children) {
-      if (["String", "Number"].indexOf(this.props.children.constructor.name) >= 0)
-        return Text
+    if (this.props.children && ["String", "Number"].indexOf(this.props.children.constructor.name) >= 0) {
+      return Text
+    } else {
       return View
     }
-    return View
   }
 
   render () {

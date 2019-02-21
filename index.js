@@ -1,10 +1,12 @@
-export default class BasicComponents {
-  constructor (config) {
-    global.config = config
-    // require('Theme')
-    // require('Style')
-    // require('Flex')
-    // require('Write')
-    // require('ApiClient')
+export default class Nuclear {
+  constructor (configs) {
+    global.nuclearConfigs = configs
+
+    require('./Import')
+    require('./Theme')
+    require('./Style')
+    require('./Flex')
+    require('./Write')
+    require('./ApiClient')
   }
 }

@@ -6,11 +6,9 @@ global.Height = Dimensions.get('window').height
 global.Width  = Dimensions.get('window').width
 global.rgba = (r, g, b, a) => "rgba("+r+","+g+","+b+","+a+")"
 
-var or = (a, b, c) => {
-  if (a || a === 0) return a
-  if (b || b === 0) return b
-  return c
-}
+var or = (a, b, c) => (a || a === 0) ? a : (b || b === 0) ? b : c
+var bg = (x) => ({backgroundColor: x})
+var color = (c) => ({color: c})
 
 global.s = {
   // Positioning
@@ -22,9 +20,10 @@ global.s = {
   block:  {display: "block"},
   inline: {display: "inline-block"},
   hidden: {display: "none"},
-  flex:   {display: 1},
 
   // Flex
+  flex:          {flex: 1},
+  shrink:        {flex: 0},
   wrap:          {flexWrap: "wrap"},
   row:           {flexDirection: "row"},
   rowReverse:    {flexDirection: "row-reverse"},
@@ -45,44 +44,45 @@ global.s = {
   end1:          {justifyContent: "flex-end"},
   end2:          {alignItems: "flex-end"},
   endSelf:       {alignSelf: "flex-end"},
-  shrink:        {flex: 0},
   grow:          (x) => ({flexGrow: x == true ? 1 : x || 1}),
 
   // Backgrounds
-  bg:       (x) => ({backgroundColor: x}),
-  opaqueBG: (x) => ({backgroundColor: rgba(0, 0, 0, x)}),
-  transparentBG: {backgroundColor: "transparent"},
+  bg,
+  opaqueBG: (x) => bg(rgba(0, 0, 0, x)),
+  transparentBG: bg("transparent"),
 
-  red:           {backgroundColor: rgba(255, 0, 0, 0.2)},
-  blue:          {backgroundColor: rgba(0, 0, 255, 0.2)},
-  green:         {backgroundColor: rgba(204, 255, 206, 1)},
-  yellow:        {backgroundColor: rgba(255, 255, 0, 0.2)},
-  magenta:       {backgroundColor: rgba(255, 0, 255, 0.2)},
-  cyan:          {backgroundColor: rgba(0, 255, 255, 0.2)},
-  gray:          {backgroundColor: rgba(128, 128, 128, 0.2)},
+  red:     bg(rgba(255, 0, 0, 0.2)),
+  blue:    bg(rgba(0, 0, 255, 0.2)),
+  green:   bg(rgba(204, 255, 206, 1)),
+  yellow:  bg(rgba(255, 255, 0, 0.2)),
+  magenta: bg(rgba(255, 0, 255, 0.2)),
+  cyan:    bg(rgba(0, 255, 255, 0.2)),
+  gray:    bg(rgba(128, 128, 128, 0.2)),
 
-  bg0: {backgroundColor: theme[0]},
-  bg1: {backgroundColor: theme[1]},
-  bg2: {backgroundColor: theme[2]},
-  bg3: {backgroundColor: theme[3]},
-  bg4: {backgroundColor: theme[4]},
-  bg5: {backgroundColor: theme[5]},
-  bg6: {backgroundColor: theme[6]},
-  bg7: {backgroundColor: theme[7]},
-  bg8: {backgroundColor: theme[8]},
-  bg9: {backgroundColor: theme[9]},
+  bg0: bg(theme[0]),
+  bg1: bg(theme[1]),
+  bg2: bg(theme[2]),
+  bg3: bg(theme[3]),
+  bg4: bg(theme[4]),
+  bg5: bg(theme[5]),
+  bg6: bg(theme[6]),
+  bg7: bg(theme[7]),
+  bg8: bg(theme[8]),
+  bg9: bg(theme[9]),
 
   // Font colors
-  color0: {color: theme[0]},
-  color1: {color: theme[1]},
-  color2: {color: theme[2]},
-  color3: {color: theme[3]},
-  color4: {color: theme[4]},
-  color5: {color: theme[5]},
-  color6: {color: theme[6]},
-  color7: {color: theme[7]},
-  color8: {color: theme[8]},
-  color9: {color: theme[9]},
+  color,
+
+  color0: color(theme[0]),
+  color1: color(theme[1]),
+  color2: color(theme[2]),
+  color3: color(theme[3]),
+  color4: color(theme[4]),
+  color5: color(theme[5]),
+  color6: color(theme[6]),
+  color7: color(theme[7]),
+  color8: color(theme[8]),
+  color9: color(theme[9]),
 
   // Text
   noWrap:       {whiteSpace: "nowrap"},
@@ -114,7 +114,8 @@ global.s = {
   circle:     (x) => ({borderRadius: 1000, width: x, height: x}),
 
   // Distancing
-  paddings:       (x, y, w, z) => ({paddingTop: x, paddingRight: or(y, x), paddingBottom: or(w, x), paddingLeft: or(z, y, x)}),
+  padding:       (x) => ({padding: x}),
+  paddings:      (x) => ({paddingTop: x[0], paddingRight: or(x[1], x[0]), paddingBottom: or(x[2], x[0]), paddingLeft: or(x[2], x[1], x[0])}),
   paddingH:      (x) => ({paddingLeft: x, paddingRight: x}),
   paddingV:      (x) => ({paddingTop: x, paddingBottom: x}),
   paddingTop:    (x) => ({paddingTop: x}),
@@ -135,108 +136,23 @@ global.s = {
   pointer:  {cursor: "pointer"},
   noBorder: {border: 0},
   border:   (x, y) => ({borderWidth: x, borderColor: y}),
-  borderBottom: (x, y) => ({borderBottomWidth: x, borderBottomColor: y}),
+  borers:   (x, y) => ({borderTopWidth: x[0], borderRightWidth: or(x[1], x[0]), borderBottomWidth: or(x[2], x[0]), borderLeftWidth: or(x[2], x[1], x[0]), borderBottomColor: y}),
   radius:   (x) => ({borderRadius: x}),
-  bgImage:  (x) => ({backgroundImage: "url(" + x + ")"}),
   zindex:   (x) => ({zIndex: x}),
   opacity:  (x) => ({opacity: x}),
 
   // General: simple
-  flex:         { flex: 1 },
   rotate:       { transform: [{rotate: '-90deg'}] },
   translucid:   { opacity: 0.6 },
-  // high:         { height: Height },
-  // wide:         { width: Width },
   noFontFamily: { fontFamily: '' },
   fontFamily: (x) => ({ fontFamily: x }),
-  signika: {fontFamily: 'Signika Negative' + (Platform.OS == 'ios' ? '' : ' Regular')},
-  signikaBold: {fontFamily: 'Signika Negative' + (Platform.OS == 'ios' ? '' : ' Bold'), fontWeight: 'bold'},
   heightForWidth: { width: Height },
   widthForHeight: { height: Width },
   topBarHeight,
-  color: (c) => ({color: c}),
 
   // General: complex
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-  },
-  item: {
-    fontSize: 20,
-    marginHorizontal: 30,
-    fontFamily: 'timeless',
-  },
-  absolute: {
-    position: 'absolute',
-    height: Height,
-    width: Width,
-    top: 0,
-    left: 0,
-  },
   textAlignCenter: {
     textAlign: 'center',
     textAlignVertical: 'center',
-  },
-
-  // Specific
-  cardboard: {
-    flex: 1,
-    backgroundColor: '#eee',
-  },
-  card: {
-    margin: 5,
-    marginBottom: 0,
-    borderTopRightRadius: 5,
-    borderTopLeftRadius: 5,
-    borderWidth: 1,
-  },
-  card2: {
-    margin: 5,
-    borderRadius: 7,
-    borderWidth: 1,
-  },
-  indicator: {
-    borderRadius: 24,
-    width: 24,
-    height: 24,
-    right: 1,
-    top: 0,
-    borderWidth: 1,
-    position: 'absolute'
-  },
-  gregorianMonthBar: {
-    marginBottom: 3,
-    height: 10,
-  },
-  inlineCategory: {
-    color: 'rgba(128, 128, 128, 128)',
-    fontSize: 15,
-  },
-  searchInput: {
-    fontSize: 20,
-    height: 50
-  },
-  letterCount: {
-    width: Width - 200,
-    backgroundColor: 'red',
-  },
-  scrollView: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start'
-  },
-  bottomButtonsContainer: {
-    justifyContent: 'space-around',
-    paddingHorizontal: 50,
-  },
-  counter: {
-    fontSize: 150,
-    fontFamily: 'ruritania',
-  },
-  watermark: {
-    position: 'absolute',
-    fontSize: Width*0.4,
-    fontFamily: 'ruritania',
-    color: 'rgba(128, 128, 128, 0.25)',
   },
 }

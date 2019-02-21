@@ -2,7 +2,7 @@ import QueryString from 'query-string'
 
 let headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
 
-global.ApiClient {
+global.ApiClient = {
   post: (endpoint, data={}) => {
     return fetch(endpoint, {
       method: 'POST',

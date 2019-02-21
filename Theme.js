@@ -1,2 +1,1 @@
-global.theme = [
-]
+global.theme = nuclearConfigs.theme || []

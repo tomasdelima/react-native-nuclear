@@ -1,6 +1,6 @@
 {
-  "name": "react-native-basic-components",
-  "version": "1.0.0",
+  "name": "react-native-nuclear",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,15 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomasdelima/react-native-basic-components.git"
+    "url": "https://github.com/tomasdelima/react-native-nuclear.git"
   },
   "author": "Tomás de Lima",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tomasdelima/react-native-basic-components/issues"
+    "url": "https://github.com/tomasdelima/react-native-nuclear/issues"
   },
-  "homepage": "https://github.com/tomasdelima/react-native-basic-components#readme",
+  "homepage": "https://github.com/tomasdelima/react-native-nuclear#readme",
   "dependencies": {
-    "query-string": "^6.2.0"
+    "query-string": "^6.2.0",
+    "react-native-vector-icons": "^6.3.0",
+    "react-router-native": "^4.3.0"
   }
 }
