@@ -104,6 +104,8 @@ global.s = {
   wide:       (x=1) => ({width:    x <= 1 ? 100*x+"%" : x}),
   minWidth:   (x=1) => ({minWidth: x <= 1 ? 100*x+"%" : x}),
   maxWidth:   (x=1) => ({maxWidth: x <= 1 ? 100*x+"%" : x}),
+  minHeight:  (x=1) => ({minHeight: x <= 1 ? 100*x+"%" : x}),
+  maxHeight:  (x=1) => ({maxHeight: x <= 1 ? 100*x+"%" : x}),
   high:       (x=1) => ({height:   x <= 1 ? 100*x+"%" : x}),
   rect:       (x) => {x = x || {}; return [s.wide(x.w), s.high(x.h)]},
   top:        (x) => ({top:    x || 0}),
@@ -115,7 +117,7 @@ global.s = {
 
   // Distancing
   padding:       (x) => ({padding: x}),
-  paddings:      (x) => ({paddingTop: x[0], paddingRight: or(x[1], x[0]), paddingBottom: or(x[2], x[0]), paddingLeft: or(x[2], x[1], x[0])}),
+  paddings:      (x) => ({paddingTop: x[0], paddingRight: or(x[1], x[0]), paddingBottom: or(x[2], x[0]), paddingLeft: or(x[3], x[1], x[0])}),
   paddingH:      (x) => ({paddingLeft: x, paddingRight: x}),
   paddingV:      (x) => ({paddingTop: x, paddingBottom: x}),
   paddingTop:    (x) => ({paddingTop: x}),
@@ -124,7 +126,7 @@ global.s = {
   paddingLeft:   (x) => ({paddingLeft: x}),
 
   margin:        (x) => ({margin: x}),
-  margins:       (x) => ({marginTop: x[0], marginRight: or(x[1], x[0]), marginBottom: or(x[2], x[0]), marginLeft: or(x[2], x[1], x[0])}),
+  margins:       (x) => ({marginTop: x[0], marginRight: or(x[1], x[0]), marginBottom: or(x[2], x[0]), marginLeft: or(x[3], x[1], x[0])}),
   marginH:       (x) => ({marginLeft: x, marginRight: x}),
   marginV:       (x) => ({marginTop: x, marginBottom: x}),
   marginTop:     (x) => ({marginTop: x}),
@@ -136,7 +138,7 @@ global.s = {
   pointer:  {cursor: "pointer"},
   noBorder: {border: 0},
   border:   (x, y) => ({borderWidth: x, borderColor: y}),
-  borers:   (x, y) => ({borderTopWidth: x[0], borderRightWidth: or(x[1], x[0]), borderBottomWidth: or(x[2], x[0]), borderLeftWidth: or(x[2], x[1], x[0]), borderBottomColor: y}),
+  borders:  (x, y) => ({borderTopWidth: x[0], borderRightWidth: or(x[1], x[0]), borderBottomWidth: or(x[2], x[0]), borderLeftWidth: or(x[3], x[1], x[0]), borderColor: y}),
   radius:   (x) => ({borderRadius: x}),
   zindex:   (x) => ({zIndex: x}),
   opacity:  (x) => ({opacity: x}),

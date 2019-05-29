@@ -4,6 +4,8 @@ import ReactNative from 'react-native';
   "Animated",
   "AsyncStorage",
   "BackHandler",
+  "DatePickerAndroid",
+  "DatePickerIOS",
   "Easing",
   "Image",
   "Image",
@@ -28,6 +30,9 @@ global.Route = Route
 global.Link = Link
 global.Redirect = Redirect
 global.withRouter = withRouter
+
+global.parseQueryString = require('query-string').parse
+global.stringifyQueryString = require('query-string').stringify
 
 global.AntDesign              = require('react-native-vector-icons/AntDesign').default
 global.Entypo                 = require('react-native-vector-icons/Entypo').default
