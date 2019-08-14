@@ -30,16 +30,16 @@ class Flex extends Component {
 
     if (this.props.onPress)
       return <TouchableOpacity
-        style={s.flex}
+        style={[s.flex, this.props.containerStyle].merge()}
         onPress={this.props.onPress}
       >{component}</TouchableOpacity>
 
     if (this.props.scroll)
       return <ScrollView
         showsVerticalScrollIndicator={this.props.showsVerticalScrollIndicator}
-        style={s.flex}
+        style={[s.flex, this.props.containerStyle].merge()}
         ref={component => this.props.scroll.scrollview = component}
-        contentContainerStyle={[]}
+        contentContainerStyle={this.props.contentContainerStyle}
       >{component}</ScrollView>
 
     return component
