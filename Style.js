@@ -140,6 +140,7 @@ global.s = {
   border:   (x, y) => ({borderWidth: x, borderColor: y}),
   borders:  (x, y) => ({borderTopWidth: x[0], borderRightWidth: or(x[1], x[0]), borderBottomWidth: or(x[2], x[0]), borderLeftWidth: or(x[3], x[1], x[0]), borderColor: y}),
   radius:   (x) => ({borderRadius: x}),
+  radii:    (x) => ({borderTopLeftRadius: x[0], borderTopRightRadius: or(x[1], x[0]), borderBottomRightRadius: or(x[2], x[0]), borderBottomLeftRadius: or(x[3], x[1], x[0])}),
   zindex:   (x) => ({zIndex: x}),
   opacity:  (x) => ({opacity: x}),
 

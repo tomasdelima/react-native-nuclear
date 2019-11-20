@@ -20,11 +20,12 @@ import ReactNative from 'react-native';
   "Text",
   "TextInput",
   "TouchableHighlight",
+  "TouchableWithoutFeedback",
   "TouchableOpacity",
   "View",
 ].map(i => global[i] = ReactNative[i])
 
-import { NativeRouter, Route, Link, Redirect, withRouter } from "react-router-native"
+import { NativeRouter, Route, Link, Redirect, withRouter, BackButton } from "react-router-native"
 global.NativeRouter = NativeRouter
 global.Route = Route
 global.Link = Link
