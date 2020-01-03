@@ -1,37 +1,40 @@
 import ReactNative from 'react-native';
 [
-  "ActivityIndicator",
-  "Animated",
-  "AsyncStorage",
-  "BackHandler",
-  "DatePickerAndroid",
-  "DatePickerIOS",
-  "Easing",
-  "Image",
-  "Image",
-  "KeyboardAvoidingView",
-  "NativeModules",
-  "NativeModules",
-  "PermissionsAndroid",
-  "Picker",
-  "Platform",
-  "ScrollView",
-  "StyleSheet",
-  "Text",
-  "TextInput",
-  "TouchableHighlight",
-  "TouchableWithoutFeedback",
-  "TouchableOpacity",
-  "View",
+  'ActivityIndicator',
+  'Animated',
+  'AsyncStorage',
+  'BackHandler',
+  'Easing',
+  'Image',
+  'Image',
+  'KeyboardAvoidingView',
+  'Modal',
+  'NativeModules',
+  'NativeModules',
+  'PermissionsAndroid',
+  'Picker',
+  'Platform',
+  'ScrollView',
+  'StyleSheet',
+  'Text',
+  'TextInput',
+  'TouchableHighlight',
+  'TouchableWithoutFeedback',
+  'TouchableOpacity',
+  'View',
 ].map(i => global[i] = ReactNative[i])
 
-import { NativeRouter, Route, Link, Redirect, withRouter, BackButton } from "react-router-native"
-global.NativeRouter = NativeRouter
-global.Route = Route
-global.Link = Link
-global.Redirect = Redirect
-global.withRouter = withRouter
+import ReactNativeRouterNative from 'react-router-native';
+[
+  'NativeRouter',
+  'Route',
+  'Link',
+  'Redirect',
+  'withRouter',
+  'withRouter',
+].map(i => global[i] = ReactNativeRouterNative[i])
 
+global.DateTimePicker = require('@react-native-community/datetimepicker')
 global.parseQueryString = require('query-string').parse
 global.stringifyQueryString = require('query-string').stringify
 
