@@ -10,7 +10,7 @@ class Flex extends Component {
   }
 
   render () {
-    var style = (this.props.children && ["String", "Number"].indexOf(this.props.children.constructor.name) >= 0) ? [] : [s.flex, s.center1, s.center2]
+    var style = (this.props.children && ["String", "Number"].indexOf(this.props.children.constructor.name) >= 0) ? [] : [s.flex(1), s.center1, s.center2]
 
     Object.keys(this.props).map(prop => {
       if (s[prop]) {
@@ -30,7 +30,7 @@ class Flex extends Component {
 
     if (this.props.onPress) {
       return <TouchableOpacity
-        style={[s.flex, this.props.containerStyle]}
+        style={[s.flex(1), this.props.containerStyle]}
         onPress={this.props.onPress}
       >{component}</TouchableOpacity>
     }
@@ -38,7 +38,7 @@ class Flex extends Component {
     if (this.props.scroll) {
       return <ScrollView
         showsVerticalScrollIndicator={this.props.showsVerticalScrollIndicator}
-        style={[s.flex, this.props.containerStyle]}
+        style={[s.flex(1), this.props.containerStyle]}
         ref={component => this.props.scroll.scrollview = component}
         contentContainerStyle={this.props.contentContainerStyle}
         keyboardShouldPersistTaps={this.props.keyboardShouldPersistTaps}

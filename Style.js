@@ -22,7 +22,7 @@ global.s = {
   hidden:      {display: "none"},
 
   // Flex
-  flex:          (x) => ({flex: x == true ? 1 : x}),
+  flex:          (x = 1) => ({flex: x == true ? 1 : x}),
   shrink:        {flex: 0},
   wrap:          {flexWrap: "wrap"},
   row:           {flexDirection: "row"},
