@@ -17,12 +17,12 @@ global.s = {
   fixed:    {position: "fixed"},
 
   // Display
-  block:  {display: "block"},
-  inline: {display: "inline-block"},
-  hidden: {display: "none"},
+  block:       {display: "block"},
+  inlineBlock: {display: "inline-block"},
+  hidden:      {display: "none"},
 
   // Flex
-  flex:          {flex: 1},
+  flex:          (x) => ({flex: x == true ? 1 : x}),
   shrink:        {flex: 0},
   wrap:          {flexWrap: "wrap"},
   row:           {flexDirection: "row"},
@@ -44,7 +44,7 @@ global.s = {
   end1:          {justifyContent: "flex-end"},
   end2:          {alignItems: "flex-end"},
   endSelf:       {alignSelf: "flex-end"},
-  grow:          (x) => ({flexGrow: x == true ? 1 : x || 1}),
+  grow:          (x) => ({flexGrow: x == true ? 1 : x}),
 
   // Backgrounds
   bg,
@@ -145,10 +145,10 @@ global.s = {
   opacity:  (x) => ({opacity: x}),
 
   // General: simple
-  rotate:       { transform: [{rotate: '-90deg'}] },
-  translucid:   { opacity: 0.6 },
-  noFontFamily: { fontFamily: '' },
-  fontFamily: (x) => ({ fontFamily: x }),
+  rotate:         { transform: [{rotate: '-90deg'}] },
+  translucid:     { opacity: 0.6 },
+  noFontFamily:   { fontFamily: '' },
+  fontFamily:     (x) => ({ fontFamily: x }),
   heightForWidth: { width: Height },
   widthForHeight: { height: Width },
   topBarHeight,

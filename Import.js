@@ -24,15 +24,19 @@ import ReactNative from 'react-native';
   'View',
 ].map(i => global[i] = ReactNative[i])
 
-import ReactNativeRouterNative from 'react-router-native';
+const ReactRouterNative = require('react-router-native');
 [
   'NativeRouter',
   'Route',
   'Link',
   'Redirect',
+].map(i => global[i] = ReactRouterNative[i])
+
+
+const ReactRouter = require('react-router');
+[
   'withRouter',
-  'withRouter',
-].map(i => global[i] = ReactNativeRouterNative[i])
+].map(i => global[i] = ReactRouter[i])
 
 global.DateTimePicker = require('@react-native-community/datetimepicker')
 global.parseQueryString = require('query-string').parse
