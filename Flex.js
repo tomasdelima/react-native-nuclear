@@ -28,19 +28,22 @@ class Flex extends Component {
       this.props.children
     )
 
-    if (this.props.onPress)
+    if (this.props.onPress) {
       return <TouchableOpacity
         style={[s.flex, this.props.containerStyle]}
         onPress={this.props.onPress}
       >{component}</TouchableOpacity>
+    }
 
-    if (this.props.scroll)
+    if (this.props.scroll) {
       return <ScrollView
         showsVerticalScrollIndicator={this.props.showsVerticalScrollIndicator}
         style={[s.flex, this.props.containerStyle]}
         ref={component => this.props.scroll.scrollview = component}
         contentContainerStyle={this.props.contentContainerStyle}
+        keyboardShouldPersistTaps={this.props.keyboardShouldPersistTaps}
       >{component}</ScrollView>
+    }
 
     return component
   }
