@@ -12,7 +12,6 @@ import ReactNative from 'react-native';
   'NativeModules',
   'NativeModules',
   'PermissionsAndroid',
-  'Picker',
   'Platform',
   'ScrollView',
   'StyleSheet',
@@ -41,6 +40,7 @@ const ReactRouter = require('react-router');
 global.DateTimePicker = require('@react-native-community/datetimepicker')
 global.parseQueryString = require('query-string').parse
 global.stringifyQueryString = require('query-string').stringify
+global.Picker = require('@react-native-picker/picker').Picker
 
 global.AntDesign              = require('react-native-vector-icons/AntDesign').default
 global.Entypo                 = require('react-native-vector-icons/Entypo').default
